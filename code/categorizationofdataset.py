@@ -20,7 +20,7 @@ from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split, cross_val_score, KFold
 import seaborn as sns
-file_path = '/content/SBT datasets/data(raw audio features).csv'
+file_path = '/content/data(raw audio features).csv'
 data = pd.read_csv(file_path)
 
 """# **DATA PREPROCESSING**
@@ -40,7 +40,7 @@ def categorize_danceability(danceability):
     elif 0.7 <= danceability < 1.0:
         return 'High-dance'
 
-df = pd.read_csv('/content/SBT datasets/data(raw audio features).csv')
+df = pd.read_csv('/content/data(raw audio features).csv')
 
 df['danceability'] = df['danceability'].apply(categorize_danceability)
 
@@ -261,11 +261,11 @@ def categorize_popularity(popularity):
     if popularity <= 10:
         return 'Not Popular'
     elif 10 < popularity <= 30:
-        return 'Mainstream'
-    elif 30 < popularity <= 50:
         return 'Kind of Popular'
-    else:
+    elif 30 < popularity <= 50:
         return 'Popular'
+    else:
+        return 'Very Popular'
 
 df = pd.read_csv('/content/SBT_categorized_dataset.csv')
 
